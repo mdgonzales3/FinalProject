@@ -29,7 +29,9 @@ class BusinessLogic
                         break;
                     // Add A Course
                     case 2:
-                        Console.WriteLine("To Be Implemented");
+                        DataTable tablePending = database.AddPackage(user);
+                        if(tablePending != null)
+                            appGUI.DisplayPending(tablePending);
                         break;
                     // Drop A Course
                     case 3:

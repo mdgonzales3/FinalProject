@@ -9,7 +9,7 @@ class GuiTier{
     public User Login(){
         Console.WriteLine("------Welcome to the Package Software------");
         Console.WriteLine("Please input staff username: ");
-        user.staff_username = Convert.ToInt16(Console.ReadLine());
+        user.staff_username = Console.ReadLine();
         Console.WriteLine("Please input staff password: ");
         user.staff_password = Console.ReadLine();
         return user;
@@ -32,6 +32,13 @@ class GuiTier{
     public void DisplayResidents(DataTable tableResidents){
         Console.WriteLine("---------------Resident List-------------------");
         foreach(DataRow row in tableResidents.Rows){
+           Console.WriteLine($"id: {row["id"]} \t full_name: {row["full_name"]} \t unit_number:{row["unit_number"]}");
+        }
+    }
+
+    public void DisplayPending(DataTable tablePending){
+        Console.WriteLine("---------------Pending List-------------------");
+        foreach(DataRow row in tablePending.Rows){
            Console.WriteLine($"id: {row["id"]} \t full_name: {row["full_name"]} \t unit_number:{row["unit_number"]}");
         }
     }

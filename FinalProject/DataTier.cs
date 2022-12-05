@@ -50,10 +50,8 @@ class DataTier{
             string procedure = "CheckResident";
             MySqlCommand cmd = new MySqlCommand(procedure, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@inputfull_name", user.full_name);
+            cmd.Parameters.AddWithValue("@inputfull_name", resident);
             cmd.Parameters["@inputfull_name"].Direction = ParameterDirection.Input;
-            cmd.Parameters.AddWithValue("@inputResident", resident);
-            cmd.Parameters["@inputResident"].Direction = ParameterDirection.Input;
 
             MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -70,5 +68,31 @@ class DataTier{
             return null;
         }
     }
+
+    public void AddPackage(User user, string full_name, int unit_number){
+        MySqlConnection conn = new MySqlConnection(connStr);
+       
+        try
+        {  
+            conn.Open();
+            string procedure = "AddPackage";
+            MySqlCommand cmd = new MySqlCommand(procedure, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@inputfull_name", full_name);
+            cmd.Parameters["@inputfull_name"].Direction = ParameterDirection.Input;
+            cmd.Parameters.AddWithValue("@inputunit_number", unit_number);
+            cmd.Parameters["@inputunit_number"].Direction = ParameterDirection.Input;
+            cmd.ExecuteNonQuery();
+            
+            
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            conn.Close();
+        }
+
+        
+}
 
 }
