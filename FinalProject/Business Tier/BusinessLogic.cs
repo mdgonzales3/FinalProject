@@ -27,9 +27,9 @@ class BusinessLogic
                         if(tableResidents != null)
                             appGUI.DisplayResidents(tableResidents);
                         break;
-                    // Add A Course
+                    // Add A Package to Pending
                     case 2:
-                        DataTable tablePending = database.AddPackage(user);
+                        DataTable tablePending = database.AddPackage(user , full_name , unit_number);
                         if(tablePending != null)
                             appGUI.DisplayPending(tablePending);
                         break;
